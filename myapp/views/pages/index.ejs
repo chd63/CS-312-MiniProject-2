@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="blogs">
+    <h1>Joke Website</h1>
+
+    <form name="jokePost" method="POST" action="/joke/add">
+        <label for="catagories">Choose Type Of Joke</label>
+        <select id="catagories" name="joke-type">
+            <option value="Any">Any</option>
+            <option value="Misc">Misc</option>
+            <option value="Programming">Programming</option>
+            <option value="Dark">Dark</option>
+            <option value="Pun">Pun</option>
+            <option value="Spooky">Spooky</option>
+            <option value="Christmas">Christmas</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <div class="joke-list">
+        <% jokeList.forEach(function(joke) { %>
+            <div class = "joke-post">
+                <p><%= joke.data %></p>
+                <form name = deleteJoke method="POST" action="/joke/delete">
+                    <input type="hidden" name="id" value="<%= joke.id %>">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% }); %>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
