@@ -30,6 +30,7 @@ app.post('/joke/add',function(req,res){
 
   let newjoke = {};
   const jokeType = req.body['joke-type'];
+  // make sure to add the flags to prevent inappropriate jokes
   const url = `https://v2.jokeapi.dev/joke/${jokeType}?blacklistFlags=nsfw,racist,sexist,explicit,political,religious`;
 
   // Make the GET request
